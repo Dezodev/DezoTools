@@ -25,29 +25,74 @@
 
 			<!-- main content -->
 			<div id="post-body-content">
+                
+                <?php if ($update != 0) : ?>
+                    <div class="notice notice-success is-dismissible">
+                        <p><?php _e( 'Registered options.', 'dezo-tools' ); ?></p>
+                        <button type="button" class="notice-dismiss"><span class="screen-reader-text">Ne pas tenir compte de ce message.</span></button>
+                    </div>
+                <?php endif; ?>
+                
                 <h2 class="nav-tab-wrapper">
                     <a href="#<?php echo $this->plugin_name; ?>-general" class="nav-tab nav-tab-active"><?php _e('General','dezo-tools') ?></a>
                     <a href="#<?php echo $this->plugin_name; ?>-code" class="nav-tab"><?php _e('Code','dezo-tools') ?></a>
                     <a href="#<?php echo $this->plugin_name; ?>-performance" class="nav-tab"><?php _e('Performance','dezo-tools') ?></a>
                 </h2><!-- Nav tabs -->
                 
-                <form method="post" action="options.php">
+                <form method="post" action="admin.php?page=dezotools-admin-page">
                     <div class="tab-content" id="<?php echo $this->plugin_name; ?>-general">
-                        <h3><?php esc_attr_e('Cookie notice', 'dezo-tools'); ?></h3>
+                        
+                        <h3><?php _e('Site features', 'dezo-tools'); ?></h3>
                         <fieldset>
-                            <label for="users_can_register">
-                                <input name="<?php echo $this->plugin_name; ?>_cookie_display" type="checkbox" id="<?php echo $this->plugin_name; ?>_cookie_display" value="1" />
-                                <span><?php esc_attr_e( 'Display the Cookie notice message', 'dezo-tools' ); ?></span>
+                            <label for="<?php echo $cookieDisplay; ?>">
+                                <input name="<?php echo $cookieDisplay; ?>" type="checkbox" id="<?php echo $cookieDisplay; ?>" <?php checked( 1, get_option($cookieDisplay)); ?> value="1" />
+                                <span><?php _e( 'Display the message for notifying the use of cookies', 'dezo-tools' ); ?></span>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label for="<?php echo $swipeboxDisplay; ?>">
+                                <input name="<?php echo $swipeboxDisplay; ?>" type="checkbox" id="<?php echo $swipeboxDisplay; ?>" <?php checked( 1, get_option($swipeboxDisplay)); ?> value="1" />
+                                <span><?php _e( 'Enable the display of images over the site.', 'dezo-tools' ); ?></span>
+                            </label>
+                        </fieldset>
+                        
+                        <h3><?php _e('Wordpress Admin', 'dezo-tools'); ?></h3>
+                        <fieldset>
+                            <label for="<?php echo $logoInLogin; ?>">
+                                <input name="<?php echo $logoInLogin; ?>" type="checkbox" id="<?php echo $logoInLogin; ?>" <?php checked( 1, get_option($logoInLogin)); ?> value="1" />
+                                <span><?php _e( 'Display the site logo in the login page', 'dezo-tools' ); ?></span>
                             </label>
                         </fieldset>
                         
                     </div>
                     <div class="tab-content ui-tabs-hide" id="<?php echo $this->plugin_name; ?>-code">
-                        <h3><?php esc_attr_e('Add code to header', 'dezo-tools'); ?></h3>
+                        <h3><?php _e('Add code to header', 'dezo-tools'); ?></h3>
+                        <fieldset>
+                            <textarea id="<?php echo $headerCode; ?>" name="<?php echo $headerCode; ?>" cols="80" rows="10"><?php echo (get_option($headerCode) != null) ? get_option($headerCode) : '' ; ?></textarea><br>
+                        </fieldset>
+                        <h3><?php _e('Add code to footer', 'dezo-tools'); ?></h3>
+                        <fieldset>
+                            <textarea id="<?php echo $footerCode; ?>" name="<?php echo $footerCode; ?>" cols="80" rows="10"><?php echo (get_option($footerCode) != null) ? get_option($footerCode) : '' ; ?></textarea><br>
+                        </fieldset>
                     </div>
                     <div class="tab-content ui-tabs-hide" id="<?php echo $this->plugin_name; ?>-performance">
-                        <h3><?php esc_attr_e('Performance setting', 'dezo-tools'); ?></h3>
+                        <h3><?php _e('Performance setting', 'dezo-tools'); ?></h3>
+                        <fieldset>
+                            <label for="<?php echo $logoInLogin; ?>">
+                                <span class="dezo-label"><?php _e( 'Number of revision : ', 'dezo-tools' ); ?></span>
+                                <input type="number" class="dezo-input" id="<?php echo $postRevision; ?>" name="<?php echo $postRevision; ?>" min="0" max="15" value="<?php echo (get_option($postRevision) != null) ? get_option($postRevision) : '' ; ?>">
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label for="<?php echo $logoInLogin; ?>">
+                                <span class="dezo-label"><?php _e( 'Post auto-save interval : ', 'dezo-tools' ); ?></span>
+                                <input type="number" class="dezo-input" id="<?php echo $postInterval; ?>" name="<?php echo $postInterval; ?>" min="20" max="120" value="<?php echo (get_option($postInterval) != null) ? get_option($postInterval) : '' ; ?>">
+                            </label>
+                        </fieldset>
+                        
                     </div>
+                    
+                    <input type="hidden" name="token" value="9A64E2178">
                     <?php submit_button('Save all changes', 'primary','submit', TRUE); ?>
                 </form>
 
@@ -62,10 +107,10 @@
 
 					<div class="postbox">
 
-						<h2><span><?php esc_attr_e( 'Supporting the Plugin creator', 'dezo-tools' ); ?></span></h2>
+						<h2><span><?php _e( 'Supporting the Plugin creator', 'dezo-tools' ); ?></span></h2>
 
 						<div class="inside">
-							<p><?php esc_attr_e('Ce plugin vous est proposé gratuitement. Pour qu\'on puisse vous proposer encore plus de fonctionalités, faite un don pour le créateur du plugin, DezoDev, ou faite parler du plugin.', 'dezo-tools' ); ?></p>
+							<p><?php _e('This plugin is available for free. So we can offer you even more features, made a donation to the plugin creator, DezoDev, or made mention of the plugin.', 'dezo-tools' ); ?></p>
                             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                 <input type="hidden" name="cmd" value="_s-xclick">
                                 <input type="hidden" name="hosted_button_id" value="CQ73UR2T4X4RC">

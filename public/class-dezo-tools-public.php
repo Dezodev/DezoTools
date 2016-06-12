@@ -52,6 +52,9 @@ class Dezo_Tools_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		// Set image size
+		add_image_size( 'dezo-one-news', 345, 140, array( 'center', 'center' ) );
+
 	}
 
 	/**
@@ -60,20 +63,14 @@ class Dezo_Tools_Public {
 	 * @since    0.0.1
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Dezo_Tools_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Dezo_Tools_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+			// Plugin Style
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/dezo-tools-public.css', array(), $this->version, 'all' );
+        
+			// Lightbox Style
+		wp_enqueue_style( 'swipebox-style', plugin_dir_url( __FILE__ ) . 'css/swipebox.min.css', array(), $this->version, 'all' );
+
+			// Grids Style
+		wp_enqueue_style( 'dezo-grids-style', 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css', array(), '0.6.0', 'all' );
 
 	}
 
@@ -83,21 +80,36 @@ class Dezo_Tools_Public {
 	 * @since    0.0.1
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Dezo_Tools_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Dezo_Tools_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
+			//Plugin Script
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dezo-tools-public.js', array( 'jquery' ), $this->version, false );
-
+		
+			// Cookie Display
+		wp_enqueue_script('jquery-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.js', array( 'jquery' ), '1.4.1', true);
+		wp_register_script('cookie-pop-script', plugin_dir_url( __FILE__ ) . 'js/cookie-pop.js', array( 'jquery', 'jquery-cookie' ), $this->version, true);
+		wp_localize_script( 'cookie-pop-script', 'dezo_cookie_pop_text', array(
+				'message' => __( 'This website uses cookies to ensure you get the best experience on our website.', 'dezo-tools' ),
+				'button'  => __( 'OK', 'dezo-tools' ),
+				'more'    => __( 'More info', 'dezo-tools' )
+			)
+		);
+		
+		$cookieDisplay = $this->plugin_name.'_cookie_display';
+		if (get_option( $cookieDisplay )) {
+			wp_enqueue_script( 'cookie-pop-script' );
+		} else {
+			wp_dequeue_script( 'cookie-pop-script' );
+		}
+        
+            // Lightbox Display
+		wp_enqueue_script('jquery-swipebox', plugin_dir_url( __FILE__ ) . 'js/jquery.swipebox.min.js', array( 'jquery' ), '1.4.1', true);
+		wp_register_script('swipebox-script', plugin_dir_url( __FILE__ ) . 'js/swipebox.js', array( 'jquery' ), $this->version, true);        
+        
+		$swipeboxDisplay = $this->plugin_name.'_swipebox_display';        
+		if (get_option( $swipeboxDisplay )) {
+			wp_enqueue_script( 'swipebox-script' );
+		} else {
+			wp_dequeue_script( 'swipebox-script' );
+		}	
 	}
 
 }

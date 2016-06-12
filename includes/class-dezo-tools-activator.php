@@ -30,7 +30,7 @@ class Dezo_Tools_Activator {
 	 * @since    0.0.1
 	 */
 	public static function activate() {
-
+		$plugin_name = 'dezo-tools';
 	}
 
 }

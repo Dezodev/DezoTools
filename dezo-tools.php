@@ -1,12 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              http://dezodev.tk/
  * @since             0.0.1
@@ -15,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       DezoTools
  * Plugin URI:        http://dezodev.tk/dezo-tools
- * Description:       Un plugin tous en un pour ameliorer votre wordpress.
+ * Description:       Dezo Tools est un plugin tous en un pour ameliorer votre wordpress.
  * Version:           0.0.1
  * Author:            dezodev
  * Author URI:        http://dezodev.tk/

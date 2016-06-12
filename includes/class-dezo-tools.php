@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       http://dezodev.tk/
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    Dezo_Tools
  * @subpackage Dezo_Tools/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    Dezo_Tools
  * @subpackage Dezo_Tools/includes
  * @author     dezodev <dezodev@gmail.com>
@@ -33,16 +33,25 @@ class Dezo_Tools {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      Dezo_Tools_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
+	 * The class responsible for defining the differents shortcodes
+	 *
+	 * @since    0.0.1
+	 * @access   protected
+	 * @var      Dezo_Tools_Shortcode    $shortcode    
+	 */
+	protected $shotcode;
+
+	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -51,7 +60,7 @@ class Dezo_Tools {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -64,12 +73,12 @@ class Dezo_Tools {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function __construct() {
 
 		$this->plugin_name = 'dezo-tools';
-		$this->version = '1.0.0';
+		$this->version = '0.0.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -91,7 +100,7 @@ class Dezo_Tools {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -109,6 +118,11 @@ class Dezo_Tools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-dezo-tools-i18n.php';
 
 		/**
+		 * The class responsible for defining the differents shortcodes
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-dezo-tools-shortcode.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-dezo-tools-admin.php';
@@ -120,6 +134,7 @@ class Dezo_Tools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-dezo-tools-public.php';
 
 		$this->loader = new Dezo_Tools_Loader();
+		$this->shortcode = new Dezo_Tools_Shortcode();
 
 	}
 
@@ -129,7 +144,7 @@ class Dezo_Tools {
 	 * Uses the Dezo_Tools_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -144,23 +159,27 @@ class Dezo_Tools {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Dezo_Tools_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'dezotools_admin_menu');
+		$this->loader->add_action('login_head', $plugin_admin, 'dezo_custom_login_logo');
+		$this->loader->add_action( 'wp_footer', $plugin_admin, 'dezo_custom_footer');
+		$this->loader->add_action( 'wp_head', $plugin_admin, 'dezo_custom_header');		
+		
 	}
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -175,7 +194,7 @@ class Dezo_Tools {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function run() {
 		$this->loader->run();
@@ -185,7 +204,7 @@ class Dezo_Tools {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -195,7 +214,7 @@ class Dezo_Tools {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    Dezo_Tools_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -205,7 +224,7 @@ class Dezo_Tools {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
