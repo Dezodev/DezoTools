@@ -31,6 +31,9 @@ Fonctionnalités :
 
 == Changelog ==
 
+= 0.0.2 =
+* Minor Bugfix : Compatibilty, Header & Footer code
+
 = 0.0.1 =
 * First version
 

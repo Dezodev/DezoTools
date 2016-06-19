@@ -85,7 +85,7 @@ class Dezo_Tools_Public {
 		
 			// Cookie Display
 		wp_enqueue_script('jquery-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.js', array( 'jquery' ), '1.4.1', true);
-		wp_register_script('cookie-pop-script', plugin_dir_url( __FILE__ ) . 'js/cookie-pop.js', array( 'jquery', 'jquery-cookie' ), $this->version, true);
+		wp_register_script('cookie-pop-script', plugin_dir_url( __FILE__ ) . 'js/cookie-pop.js', array( 'jquery', 'jquery-cookie' ), '1.0.0', true);
 		wp_localize_script( 'cookie-pop-script', 'dezo_cookie_pop_text', array(
 				'message' => __( 'This website uses cookies to ensure you get the best experience on our website.', 'dezo-tools' ),
 				'button'  => __( 'OK', 'dezo-tools' ),
@@ -102,7 +102,7 @@ class Dezo_Tools_Public {
         
             // Lightbox Display
 		wp_enqueue_script('jquery-swipebox', plugin_dir_url( __FILE__ ) . 'js/jquery.swipebox.min.js', array( 'jquery' ), '1.4.1', true);
-		wp_register_script('swipebox-script', plugin_dir_url( __FILE__ ) . 'js/swipebox.js', array( 'jquery' ), $this->version, true);        
+		wp_register_script('swipebox-script', plugin_dir_url( __FILE__ ) . 'js/swipebox.js', array( 'jquery' ), '1.0.0', true);        
         
 		$swipeboxDisplay = $this->plugin_name.'_swipebox_display';        
 		if (get_option( $swipeboxDisplay )) {

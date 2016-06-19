@@ -23,7 +23,10 @@ Dezo Tools est un plugin puissant mais simple d'utilisation sur wordpress. Ce pl
 
 ## Changelog
 
-### 0.0.1 =
+### 0.0.2
+* Minor Bugfix : Compatibilty, Header & Footer code
+
+### 0.0.1
 * First version
 
 ## Upgrade Notice

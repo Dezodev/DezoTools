@@ -10,7 +10,7 @@
  * Plugin Name:       DezoTools
  * Plugin URI:        http://dezodev.tk/dezo-tools
  * Description:       Dezo Tools est un plugin tous en un pour ameliorer votre wordpress.
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            dezodev
  * Author URI:        http://dezodev.tk/
  * License:           GPL-2.0+

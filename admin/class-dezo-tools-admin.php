@@ -137,7 +137,7 @@ class Dezo_Tools_Admin {
 			if(get_option($headerCode) != $_POST[$headerCode]){
 				$update++;
 			}
-			update_option($headerCode, $_POST[$headerCode]);
+			update_option($headerCode, stripslashes($_POST[$headerCode]));
 		} elseif (!isset($_POST[$headerCode]) && isset($_POST['token'])) {
 			update_option($headerCode, '');
 		}
@@ -147,7 +147,7 @@ class Dezo_Tools_Admin {
 			if(get_option($footerCode) != $_POST[$footerCode]){
 				$update++;
 			}
-			update_option($footerCode, $_POST[$footerCode]);
+			update_option($footerCode, stripslashes($_POST[$footerCode]));
 		} elseif (!isset($_POST[$footerCode]) && isset($_POST['token'])) {
 			update_option($footerCode, '');
 		}

@@ -2,7 +2,7 @@
 	'use strict';
 
 	$(document).ready(function() {
-		$(".nav-tab").click(function(event){
+		$(".dezo-tools-wrap .nav-tab").click(function(event){
 			event.preventDefault();     
 			$(".tab-content").addClass('ui-tabs-hide');
 			var tabname = $(this).attr('href');

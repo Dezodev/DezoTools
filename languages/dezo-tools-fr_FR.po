@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: dezo-tools 0.0.1\n"
+"Project-Id-Version: dezo-tools 0.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-30 14:19+0200\n"
 "PO-Revision-Date: 2016-06-05 16:41+0200\n"

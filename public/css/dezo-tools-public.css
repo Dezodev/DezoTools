@@ -28,6 +28,7 @@
 
 .dezo-one-news .dezo-img-placeholder {
     width: 345px;
+    max-width: 100%;
     height: 140px;
     background-color: #AAA;
 }
