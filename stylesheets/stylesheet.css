@@ -80,7 +80,7 @@ a:hover {
 .page-header .fa {
     color: #fff;
     position: absolute;
-    left: 5rem;
+    left: 5rem; bottom: -30px;
     opacity: 0.4;
     transform: rotate(-25deg);
     font-size: 10em;
