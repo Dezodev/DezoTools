@@ -36,6 +36,7 @@ Dezo Tools est un plugin puissant mais simple d'utilisation sur wordpress. Ce pl
 
 ## Credits
 Contributors: DezoDev
+
 Donate link: http://dezodev.tk/
 Tags: dezo, tool, all in one
 Requires at least: 4.0
