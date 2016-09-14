@@ -23,25 +23,27 @@ Dezo Tools est un plugin puissant mais simple d'utilisation sur wordpress. Ce pl
 
 ## Changelog
 
-### 0.0.2
-* Minor Bugfix : Compatibilty, Header & Footer code
-
-### 0.0.1
-* First version
+* 0.0.2
+    * Minor Bugfix : Compatibilty, Header & Footer code
+* 0.0.1
+    * First version
 
 ## Upgrade Notice
 
-### 0.0.1
-* First update of the DezoTools plugin
+* 0.0.1
+    * First update of the DezoTools plugin
 
 ## Credits
-Contributors: DezoDev
+* Contributors: DezoDev
+* Donate link: http://dezodev.tk/
 
-Donate link: http://dezodev.tk/
-Tags: dezo, tool, all in one
-Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 4.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Script used : Swipebox
+## Other informations
+
+* Current version : 0.0.2
+* Tags: dezo, tools, all in one, wordpress
+* Requires at least: 4.0
+* Tested up to: 4.5
+* Stable tag: 4.0
+* License: GPLv2 or later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
+* Script used : Swipebox
