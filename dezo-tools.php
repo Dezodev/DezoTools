@@ -10,7 +10,7 @@
  * Plugin Name:       DezoTools
  * Plugin URI:        http://dezodev.tk/dezo-tools
  * Description:       Dezo Tools est un plugin tous en un pour ameliorer votre wordpress.
- * Version:           0.0.2
+ * Version:           0.1.0
  * Author:            dezodev
  * Author URI:        http://dezodev.tk/
  * License:           GPL-2.0+
@@ -19,51 +19,56 @@
  * Domain Path:       /languages
  */
 
+
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'WPINC' ) ) die;
+
+// Load constants
+require_once dirname( __FILE__ ).'/includes/dezo-tools-const.php';
+$dezo_const = dezo_get_const();
+
+// Register Actions
+register_activation_hook(__FILE__, 'dezo_activation');
+register_deactivation_hook(__FILE__, 'dezo_desactivation');
+add_action( 'init', 'dezo_init', 0 );
+add_action('plugins_loaded', 'dezo_load_textdomain');
+
+function dezo_tools(){
+	$dezo_const = dezo_get_const();
+
+    // Start a PHP session, if not yet started
+	if ( ! session_id() ) session_start();
+
+	// Load Options
+	if ( ! class_exists( 'dezo_tools_admin' ) ) {
+		require_once $dezo_const->dir.'includes/class-dezo_tools-admin.php';
+		new dezo_tools_admin;
+	}
+
+    // Load Class Dezo-tools
+	if ( ! class_exists( 'dezo_tools' ) ) {
+		require_once $dezo_const->dir.'includes/class-dezo_tools.php';
+        new dezo_tools();
+	}
 }
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-dezo-tools-activator.php
- */
-function activate_dezo_tools() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-dezo-tools-activator.php';
-	Dezo_Tools_Activator::activate();
+function dezo_init(){
+	$dezo_const = dezo_get_const();
+
+	require_once $dezo_const->dir.'includes/dezo-scripts.php';
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-dezo-tools-deactivator.php
- */
-function deactivate_dezo_tools() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-dezo-tools-deactivator.php';
-	Dezo_Tools_Deactivator::deactivate();
+function dezo_activation(){
+	dezo_tools_admin::setup_default_options();
 }
 
-register_activation_hook( __FILE__, 'activate_dezo_tools' );
-register_deactivation_hook( __FILE__, 'deactivate_dezo_tools' );
-
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-dezo-tools.php';
-
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    0.0.1
- */
-function run_dezo_tools() {
-
-	$plugin = new Dezo_Tools();
-	$plugin->run();
+function dezo_desactivation(){
 
 }
-run_dezo_tools();
+
+function dezo_load_textdomain() {
+	load_plugin_textdomain( 'dezo-tools', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+}
+
+// Run start function
+dezo_tools();

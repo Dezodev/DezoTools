@@ -1,47 +1,37 @@
 <?php
 
-/**
- * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       http://dezodev.tk/
- * @since      0.0.1
- *
- * @package    Dezo_Tools
- * @subpackage Dezo_Tools/admin/partials
- */
+require_once dirname(dirname( __FILE__ )).'/dezo-tools-const.php';
+$dezo_const = dezo_get_const();
+
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-
-<div class="wrap <?php echo $this->plugin_name; ?>-wrap">
+<div class="wrap <?= $dezo_const->dashname?>-wrap">
 
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-    
+
     <div id="poststuff">
 
 		<div id="post-body" class="metabox-holder columns-2">
 
 			<!-- main content -->
 			<div id="post-body-content">
-                
+
                 <?php if ($update != 0) : ?>
                     <div class="notice notice-success is-dismissible">
                         <p><?php _e( 'Registered options.', 'dezo-tools' ); ?></p>
                         <button type="button" class="notice-dismiss"><span class="screen-reader-text">Ne pas tenir compte de ce message.</span></button>
                     </div>
                 <?php endif; ?>
-                
+
                 <h2 class="nav-tab-wrapper">
-                    <a href="#<?php echo $this->plugin_name; ?>-general" class="nav-tab nav-tab-active"><?php _e('General','dezo-tools') ?></a>
-                    <a href="#<?php echo $this->plugin_name; ?>-code" class="nav-tab"><?php _e('Code','dezo-tools') ?></a>
-                    <a href="#<?php echo $this->plugin_name; ?>-performance" class="nav-tab"><?php _e('Performance','dezo-tools') ?></a>
+                    <a href="#<?= $dezo_const->dashname?>-general" class="nav-tab nav-tab-active"><?php _e('General','dezo-tools') ?></a>
+                    <a href="#<?= $dezo_const->dashname?>-code" class="nav-tab"><?php _e('Code','dezo-tools') ?></a>
+                    <a href="#<?= $dezo_const->dashname?>-performance" class="nav-tab"><?php _e('Performance','dezo-tools') ?></a>
                 </h2><!-- Nav tabs -->
-                
+
                 <form method="post" action="admin.php?page=dezotools-admin-page">
-                    <div class="tab-content" id="<?php echo $this->plugin_name; ?>-general">
-                        
+                    <div class="tab-content" id="<?= $dezo_const->dashname?>-general">
+
                         <h3><?php _e('Site features', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <label for="<?php echo $cookieDisplay; ?>">
@@ -50,12 +40,12 @@
                             </label>
                         </fieldset>
                         <fieldset>
-                            <label for="<?php echo $swipeboxDisplay; ?>">
-                                <input name="<?php echo $swipeboxDisplay; ?>" type="checkbox" id="<?php echo $swipeboxDisplay; ?>" <?php checked( 1, get_option($swipeboxDisplay)); ?> value="1" />
+                            <label for="<?php echo $lightboxDisplay; ?>">
+                                <input name="<?php echo $lightboxDisplay; ?>" type="checkbox" id="<?php echo $lightboxDisplay; ?>" <?php checked( 1, get_option($lightboxDisplay)); ?> value="1" />
                                 <span><?php _e( 'Enable the display of images over the site.', 'dezo-tools' ); ?></span>
                             </label>
                         </fieldset>
-                        
+
                         <h3><?php _e('Wordpress Admin', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <label for="<?php echo $logoInLogin; ?>">
@@ -63,9 +53,9 @@
                                 <span><?php _e( 'Display the site logo in the login page', 'dezo-tools' ); ?></span>
                             </label>
                         </fieldset>
-                        
+
                     </div>
-                    <div class="tab-content ui-tabs-hide" id="<?php echo $this->plugin_name; ?>-code">
+                    <div class="tab-content ui-tabs-hide" id="<?= $dezo_const->dashname?>-code">
                         <h3><?php _e('Add code to header', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <textarea id="<?php echo $headerCode; ?>" name="<?php echo $headerCode; ?>" cols="80" rows="10"><?php echo (get_option($headerCode) != null) ? get_option($headerCode) : '' ; ?></textarea><br>
@@ -75,7 +65,7 @@
                             <textarea id="<?php echo $footerCode; ?>" name="<?php echo $footerCode; ?>" cols="80" rows="10"><?php echo (get_option($footerCode) != null) ? get_option($footerCode) : '' ; ?></textarea><br>
                         </fieldset>
                     </div>
-                    <div class="tab-content ui-tabs-hide" id="<?php echo $this->plugin_name; ?>-performance">
+                    <div class="tab-content ui-tabs-hide" id="<?= $dezo_const->dashname?>-performance">
                         <h3><?php _e('Performance setting', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <label for="<?php echo $logoInLogin; ?>">
@@ -89,9 +79,9 @@
                                 <input type="number" class="dezo-input" id="<?php echo $postInterval; ?>" name="<?php echo $postInterval; ?>" min="20" max="120" value="<?php echo (get_option($postInterval) != null) ? get_option($postInterval) : '' ; ?>">
                             </label>
                         </fieldset>
-                        
+
                     </div>
-                    
+
                     <input type="hidden" name="token" value="9A64E2178">
                     <?php submit_button('Save all changes', 'primary','submit', TRUE); ?>
                 </form>
@@ -123,8 +113,8 @@
 
 					</div>
 					<!-- .postbox -->
-                    
-                    
+
+
 
 				</div>
 				<!-- .meta-box-sortables -->
@@ -138,8 +128,5 @@
 		<br class="clear">
 	</div>
 	<!-- #poststuff -->
-    
-    
-    
 
 </div>

@@ -1,8 +1,7 @@
 /**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
+ * Dezo-tools admin style
  */
- 
+
 .dezo-tools-wrap h1.nav-tab-wrapper, .dezo-tools-wrap h2.nav-tab-wrapper, .dezo-tools-wrap h3.nav-tab-wrapper { padding-bottom: 0!important; }
 
 .dezo-tools-wrap .dezo-label { width: 20%; display: inline-block; }

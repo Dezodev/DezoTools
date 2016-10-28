@@ -1,8 +1,7 @@
 /**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
+ * DezoTools public style
  */
- 
+
 .cookie-pop {
     background-color: #474747; border-top: 1px solid #333; color: #fff; left: 0;
     position: fixed; text-align: center; bottom: 0; width: 100%; z-index: 10;
@@ -12,7 +11,7 @@
 
 .l-box { padding: 15px; }
 
-.dezo-one-news .dezo-content-news { 
+.dezo-one-news .dezo-content-news {
     border: 1px solid #AAA;
 }
 
