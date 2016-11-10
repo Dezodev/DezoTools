@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dezo-tools 0.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-30 14:19+0200\n"
-"PO-Revision-Date: 2016-06-05 16:41+0200\n"
+"POT-Creation-Date: 2016-10-28 15:04+0200\n"
+"PO-Revision-Date: 2016-10-28 16:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: Dezodev <dezodev@gmail.com>\n"
 "Language: fr_FR\n"
@@ -19,63 +19,121 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/partials/dezo-tools-admin-display.php:31
+#: includes/dezo-scripts.php:67
+msgid ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+msgstr ""
+"Ce site utilise des cookies, pour vous offrir une meilleure expérience du "
+"site."
+
+#: includes/dezo-scripts.php:68
+msgid "OK"
+msgstr "OK"
+
+#: includes/dezo-scripts.php:69
+msgid "More info"
+msgstr "Plus d'info"
+
+#: includes/partials/dezo-admin-display.php:21
 msgid "Registered options."
 msgstr "Options enregistrés"
 
-#: admin/partials/dezo-tools-admin-display.php:37
+#: includes/partials/dezo-admin-display.php:27
 msgid "General"
 msgstr "Général"
 
-#: admin/partials/dezo-tools-admin-display.php:38
+#: includes/partials/dezo-admin-display.php:28
 msgid "Code"
 msgstr "Code"
 
-#: admin/partials/dezo-tools-admin-display.php:39
+#: includes/partials/dezo-admin-display.php:29
 msgid "Performance"
 msgstr "Performance"
 
-#: admin/partials/dezo-tools-admin-display.php:45
-msgid "Cookies notice"
-msgstr "Notification des cookies"
+#: includes/partials/dezo-admin-display.php:35
+msgid "Site features"
+msgstr "Fonctionnalités du site"
 
-#: admin/partials/dezo-tools-admin-display.php:49
+#: includes/partials/dezo-admin-display.php:39
 msgid "Display the message for notifying the use of cookies"
 msgstr "Afficher le message pour notifier de l'utilisation des cookies"
 
-#: admin/partials/dezo-tools-admin-display.php:53
+#: includes/partials/dezo-admin-display.php:45
+msgid "Enable display of images over the site, click on the images. (lightbox)"
+msgstr ""
+"Activer l'affichage des images au-dessus le site, au clique des images. "
+"(lightbox)"
+
+#: includes/partials/dezo-admin-display.php:49
 msgid "Wordpress Admin"
 msgstr "Administration Wordpress"
 
-#: admin/partials/dezo-tools-admin-display.php:57
+#: includes/partials/dezo-admin-display.php:53
 msgid "Display the site logo in the login page"
 msgstr "Afficher le logo du site dans la page de connexion"
 
-#: admin/partials/dezo-tools-admin-display.php:63
+#: includes/partials/dezo-admin-display.php:57
+msgid "Informations"
+msgstr "Informations"
+
+#: includes/partials/dezo-admin-display.php:59
+msgid "Cookie notice"
+msgstr "Notification de l’utilisation des cookies"
+
+#: includes/partials/dezo-admin-display.php:60
+msgid ""
+"In cookies notice bar, a link \"More informations\" is present, for "
+"compliance obligation. You must create an information page explaining the "
+"use of cookies, with the slug \"cookies\"."
+msgstr ""
+"Dans la barre d'information de l'utilisation des cookies, un lien \"Plus "
+"d'informations\" est présent, par obligation de conformité. Vous devez créer "
+"une page d'information pour expliquer l'utilisation des cookies, avec pour "
+"slug \"cookies\"."
+
+#: includes/partials/dezo-admin-display.php:68
+msgid "Lightbox"
+msgstr "Lightbox"
+
+#: includes/partials/dezo-admin-display.php:69
+msgid ""
+"To use the lightbox, you need to link your images to media files. Lightbox "
+"is automatically available in the <code>#content</code>. For developers, you "
+"must add the following code: <code>class=\"dezo-lightbox\" rel=\"dezo-gallery"
+"\"</code> to activate the lightbox."
+msgstr ""
+"Pour utiliser la lightbox, vous devez mettre en lien de vos images vers les "
+"fichiers médias. La lightbox est disponible automatiquement dans le "
+"<code>#content</code>. Pour les développeurs, vous devez ajouter le code "
+"suivant <code>class=\"dezo-lightbox\" rel=\"dezo-gallery\"</code> pour "
+"activer la lightbox."
+
+#: includes/partials/dezo-admin-display.php:80
 msgid "Add code to header"
-msgstr "Ajouter du code à l'en-tête du site ( header )"
+msgstr "Ajouter du code à l'en-tête du site (header)"
 
-#: admin/partials/dezo-tools-admin-display.php:67
+#: includes/partials/dezo-admin-display.php:84
 msgid "Add code to footer"
-msgstr "Ajouter du code à la fin du site ( footer )"
+msgstr "Ajouter du code à la fin du site (footer)"
 
-#: admin/partials/dezo-tools-admin-display.php:73
+#: includes/partials/dezo-admin-display.php:90
 msgid "Performance setting"
 msgstr "Paramètre de performance"
 
-#: admin/partials/dezo-tools-admin-display.php:76
+#: includes/partials/dezo-admin-display.php:93
 msgid "Number of revision : "
 msgstr "Nombre de révision :"
 
-#: admin/partials/dezo-tools-admin-display.php:82
+#: includes/partials/dezo-admin-display.php:99
 msgid "Post auto-save interval : "
 msgstr "Intervalle de sauvegarde automatique des articles :"
 
-#: admin/partials/dezo-tools-admin-display.php:104
+#: includes/partials/dezo-admin-display.php:121
 msgid "Supporting the Plugin creator"
 msgstr "Soutenir le créateur du plugin"
 
-#: admin/partials/dezo-tools-admin-display.php:107
+#: includes/partials/dezo-admin-display.php:124
 msgid ""
 "This plugin is available for free. So we can offer you even more features, "
 "made a donation to the plugin creator, DezoDev, or made mention of the "
@@ -84,19 +142,3 @@ msgstr ""
 "Ce plugin vous est proposé gratuitement. Pour qu'on puisse vous proposer "
 "encore plus de fonctionalités, faite un don pour le créateur du plugin, "
 "DezoDev, ou faite parler du plugin."
-
-#: public/class-dezo-tools-public.php:81
-msgid ""
-"This website uses cookies to ensure you get the best experience on our "
-"website."
-msgstr ""
-"Ce site utilise des cookies, pour vous offrir une meilleure expérience du "
-"site."
-
-#: public/class-dezo-tools-public.php:82
-msgid "OK"
-msgstr "OK"
-
-#: public/class-dezo-tools-public.php:83
-msgid "More info"
-msgstr "Plus d'info"

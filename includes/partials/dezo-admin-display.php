@@ -42,7 +42,7 @@ $dezo_const = dezo_get_const();
                         <fieldset>
                             <label for="<?php echo $lightboxDisplay; ?>">
                                 <input name="<?php echo $lightboxDisplay; ?>" type="checkbox" id="<?php echo $lightboxDisplay; ?>" <?php checked( 1, get_option($lightboxDisplay)); ?> value="1" />
-                                <span><?php _e( 'Enable the display of images over the site.', 'dezo-tools' ); ?></span>
+                                <span><?php _e( 'Enable display of images over the site, click on the images. (lightbox)', 'dezo-tools' ); ?></span>
                             </label>
                         </fieldset>
 
@@ -54,8 +54,25 @@ $dezo_const = dezo_get_const();
                             </label>
                         </fieldset>
 
+
+                        <div class="postbox" style="margin-top: 20px;">
+
+    						<h3><span><?= __('Informations', 'dezo-tools'); ?> </span></h3>
+
+    						<div class="inside">
+
+                                <h4><?= __('Cookie notice', 'dezo-tools') ?></h4>
+                                <p><?= __('In cookies notice bar, a link "More informations" is present, for compliance obligation. You must create an information page explaining the use of cookies, with the slug "cookies".', 'dezo-tools') ?></p>
+
+                                <h4><?= __('Lightbox', 'dezo-tools') ?></h4>
+                                <p><?= __('To use the lightbox, you need to link your images to media files. Lightbox is automatically available in the <code>#content</code>. For developers, you must add the following code: <code>class="dezo-lightbox" rel="dezo-gallery"</code> to activate the lightbox.', 'dezo-tools') ?></p>
+
+    						</div>
+    						<!-- .inside -->
+
+    					</div>
                     </div>
-                    <div class="tab-content ui-tabs-hide" id="<?= $dezo_const->dashname?>-code">
+                    <div class="tab-content ui-tabs-hide" id="<?= $dezo_const->dashname ?>-code">
                         <h3><?php _e('Add code to header', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <textarea id="<?php echo $headerCode; ?>" name="<?php echo $headerCode; ?>" cols="80" rows="10"><?php echo (get_option($headerCode) != null) ? get_option($headerCode) : '' ; ?></textarea><br>

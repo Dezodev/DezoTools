@@ -63,7 +63,7 @@ function dezo_script_public() {
     }
 
     // cookie acceptance display
-    wp_localize_script( 'dezo-cookie', 'dezo_cookie_pop_text', array(
+    wp_localize_script( 'dezo-cookie-set', 'dezo_cookie_pop_text', array(
             'message' => __( 'This website uses cookies to ensure you get the best experience on our website.', 'dezo-tools' ),
             'button'  => __( 'OK', 'dezo-tools' ),
             'more'    => __( 'More info', 'dezo-tools' )
