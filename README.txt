@@ -1,27 +1,27 @@
 === Dezo Tools ===
 Contributors: DezoDev
 Donate link: http://dezodev.tk/
-Tags: dezo, tool, all in one
+Tags: dezo, tools, all in one
 Requires at least: 4.0
 Tested up to: 4.6.1
 Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Dezo Tools est un plugin tous en un pour ameliorer votre wordpress.
+Dezo Tools is a plugin all in one to improve your wordpress.
 
 == Description ==
 
-Dezo Tools est un plugin puissant mais simple d'utilisation sur wordpress. Ce plugin est un concentré de plusieurs outils pour améliorer votre wordpress, le securiser ou l'optimiser. Avec ce plugin, vous n'aurez plus besoin d'installer sur votre site plusieurs plugins. Cela permet aussi l'accélération de votre site.
+Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a set of several tools to improve your wordpress, secure it and optimize it. With this plugin, you will not any more need to install on your site several plugins. It also allows the acceleration of your site.
 
-Fonctionnalités :
+Features:
 
-* Logo du site sur la page de connexion
-* Notification de l'utilisation des Cookies
-* Ajout de code dans le footer et dans le header
-* Configuration du nombre de révision
-* Configuration de l'intervalle de sauvegarde automatique
-* Affichage des images dans une fenêtre lightbox
+* Logo of the site on the login page
+* Notification of the use of Cookies
+* Addition of code in the footer and in the header
+* Configuration of the number of revision
+* Configuration of the interval of automatic save
+* Display of the images in a lightbox window
 
 == Installation ==
 
