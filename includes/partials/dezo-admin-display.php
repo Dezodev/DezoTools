@@ -46,6 +46,19 @@ $dezo_const = dezo_get_const();
                             </label>
                         </fieldset>
 
+                        <h3><?php _e('maintenance', 'dezo-tools'); ?></h3>
+                        <fieldset>
+                            <label for="<?php echo $maintActivation; ?>">
+                                <input name="<?php echo $maintActivation; ?>" type="checkbox" id="<?php echo $maintActivation; ?>" <?php checked( 1, get_option($maintActivation)); ?> value="1" />
+                                <span><?php _e( 'Activate the page of maintenance', 'dezo-tools' ); // FR : Activer la page de maintenance ?></span>
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <label for="<?php echo $maintReason; ?>"><?= __('Reason of the maintenance', 'dezo-tools') // FR : Raison de la maintenance ?><span class="description"><?= 'Si vide ne s\'affiche pas' ?></span></label>
+
+                            <textarea id="<?php echo $maintReason; ?>" name="<?php echo $maintReason; ?>" cols="80" rows="2"><?php echo (get_option($maintReason) != null) ? get_option($maintReason) : '' ; ?></textarea><br>
+                        </fieldset>
+
                         <h3><?php _e('Wordpress Admin', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <label for="<?php echo $logoInLogin; ?>">

@@ -1,10 +1,7 @@
-
-<?= __('', 'dezo-tools') ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Site en maintenance</title>
+    <title><?= bloginfo('name') ?> - <?= __('Site in maintenance', 'dezo-tools') ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
@@ -30,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h1><?= __('Back soon !', 'dezo-tools') ?></h1>
+                    <h1><?= bloginfo('name').' '.__('is back soon !', 'dezo-tools') ?></h1>
                 </div>
             </div>
         </div>
@@ -41,18 +38,18 @@
             <div class="row">
                 <div class="col-xs-12">
                     <p><?= __('Your site is at present off-line. We are realizing a maintenance. Thank you for your understanding.', 'dezo-tools') ?></p>
-                    
+
                     <?php
                         if(!empty($reason)){
                             echo '<p>'.__('Reason:', 'dezo-tools').' '.$reason.'</p>';
                         }
                     ?>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

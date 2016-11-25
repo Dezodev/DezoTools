@@ -50,7 +50,7 @@ class dezo_tools_admin
 	public function dezo_admin_page(){
 
 		$update = 0;
-
+        
 		// Saving Data
 			// Fields name
 		$logoInLogin = $this->dezo_const->shortname.'_logo_in_login';
@@ -60,6 +60,8 @@ class dezo_tools_admin
 		$footerCode = $this->dezo_const->shortname.'_footer_code';
 		$postRevision = $this->dezo_const->shortname.'_num_post_revision';
 		$postInterval = $this->dezo_const->shortname.'_post_revision';
+        $maintReason = $this->dezo_const->shortname.'_maint_reason';
+        $maintActivation = $this->dezo_const->shortname.'_maint_activation';
 
 			// Display cookie information
         if($this->save_options($cookieDisplay, true)) $update++;
@@ -81,6 +83,12 @@ class dezo_tools_admin
 
 			// Post auto-save interval
 		if($this->save_options($postInterval)) $update++;
+
+            // Activation of maintenance
+        if($this->save_options($maintActivation)) $update++;
+
+        	// Reason of maintenance
+		if($this->save_options($maintReason)) $update++;
 
 		if (isset($_POST['token'])) $this->dezo_after_save();
 
@@ -133,7 +141,10 @@ class dezo_tools_admin
             $dezo_const->shortname.'_cookie_display' => false,
             $dezo_const->shortname.'_lightbox_display' => false,
             $dezo_const->shortname.'_header_code' => '',
-            $dezo_const->shortname.'_footer_code' => ''
+            $dezo_const->shortname.'_footer_code' => '',
+            $dezo_const->shortname.'_maint_reason' => '',
+            $dezo_const->shortname.'_maint_activation' => false
+
         );
 
         return $options;
