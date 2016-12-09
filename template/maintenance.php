@@ -40,8 +40,8 @@
                     <p><?= __('Your site is at present off-line. We are realizing a maintenance. Thank you for your understanding.', 'dezo-tools') ?></p>
 
                     <?php
-                        if(!empty($reason)){
-                            echo '<p>'.__('Reason:', 'dezo-tools').' '.$reason.'</p>';
+                        if(!empty($maintReason)){
+                            echo '<p>'.__('Reason:', 'dezo-tools').' '.$maintReason.'</p>';
                         }
                     ?>
 
@@ -51,7 +51,6 @@
     </div>
 
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <?php wp_footer() ?>
 </body>
 </html>

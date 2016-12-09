@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dezo-tools 0.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 15:04+0200\n"
-"PO-Revision-Date: 2016-10-28 16:33+0200\n"
+"POT-Creation-Date: 2016-12-09 12:19+0100\n"
+"PO-Revision-Date: 2016-12-09 12:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dezodev <dezodev@gmail.com>\n"
 "Language: fr_FR\n"
@@ -35,10 +35,6 @@ msgstr "OK"
 msgid "More info"
 msgstr "Plus d'info"
 
-#: includes/partials/dezo-admin-display.php:21
-msgid "Registered options."
-msgstr "Options enregistrés"
-
 #: includes/partials/dezo-admin-display.php:27
 msgid "General"
 msgstr "Général"
@@ -66,22 +62,38 @@ msgstr ""
 "(lightbox)"
 
 #: includes/partials/dezo-admin-display.php:49
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#: includes/partials/dezo-admin-display.php:53
+msgid "Activate the page of maintenance ( Except for the administrators )"
+msgstr "Activer la page de maintenance (sauf pour les administrateurs)"
+
+#: includes/partials/dezo-admin-display.php:60
+msgid "Reason of the maintenance"
+msgstr "Raison de la maintenance"
+
+#: includes/partials/dezo-admin-display.php:61
+msgid "If empty, the message does not display"
+msgstr "Si vide, le message ne s'affiche pas"
+
+#: includes/partials/dezo-admin-display.php:70
 msgid "Wordpress Admin"
 msgstr "Administration Wordpress"
 
-#: includes/partials/dezo-admin-display.php:53
+#: includes/partials/dezo-admin-display.php:74
 msgid "Display the site logo in the login page"
 msgstr "Afficher le logo du site dans la page de connexion"
 
-#: includes/partials/dezo-admin-display.php:57
+#: includes/partials/dezo-admin-display.php:81
 msgid "Informations"
 msgstr "Informations"
 
-#: includes/partials/dezo-admin-display.php:59
+#: includes/partials/dezo-admin-display.php:85
 msgid "Cookie notice"
 msgstr "Notification de l’utilisation des cookies"
 
-#: includes/partials/dezo-admin-display.php:60
+#: includes/partials/dezo-admin-display.php:86
 msgid ""
 "In cookies notice bar, a link \"More informations\" is present, for "
 "compliance obligation. You must create an information page explaining the "
@@ -92,11 +104,11 @@ msgstr ""
 "une page d'information pour expliquer l'utilisation des cookies, avec pour "
 "slug \"cookies\"."
 
-#: includes/partials/dezo-admin-display.php:68
+#: includes/partials/dezo-admin-display.php:88
 msgid "Lightbox"
 msgstr "Lightbox"
 
-#: includes/partials/dezo-admin-display.php:69
+#: includes/partials/dezo-admin-display.php:89
 msgid ""
 "To use the lightbox, you need to link your images to media files. Lightbox "
 "is automatically available in the <code>#content</code>. For developers, you "
@@ -109,31 +121,39 @@ msgstr ""
 "suivant <code>class=\"dezo-lightbox\" rel=\"dezo-gallery\"</code> pour "
 "activer la lightbox."
 
-#: includes/partials/dezo-admin-display.php:80
+#: includes/partials/dezo-admin-display.php:97
 msgid "Add code to header"
 msgstr "Ajouter du code à l'en-tête du site (header)"
 
-#: includes/partials/dezo-admin-display.php:84
+#: includes/partials/dezo-admin-display.php:101
 msgid "Add code to footer"
 msgstr "Ajouter du code à la fin du site (footer)"
 
-#: includes/partials/dezo-admin-display.php:90
+#: includes/partials/dezo-admin-display.php:107
 msgid "Performance setting"
 msgstr "Paramètre de performance"
 
-#: includes/partials/dezo-admin-display.php:93
+#: includes/partials/dezo-admin-display.php:111
 msgid "Number of revision : "
 msgstr "Nombre de révision :"
 
-#: includes/partials/dezo-admin-display.php:99
+#: includes/partials/dezo-admin-display.php:121
 msgid "Post auto-save interval : "
 msgstr "Intervalle de sauvegarde automatique des articles :"
 
-#: includes/partials/dezo-admin-display.php:121
+#: includes/partials/dezo-admin-display.php:131
+msgid "Activate the minification of the HTML"
+msgstr "Activer la minification du HTML"
+
+#: includes/partials/dezo-admin-display.php:138
+msgid "Save all changes"
+msgstr "Enregistrer les modifications"
+
+#: includes/partials/dezo-admin-display.php:151
 msgid "Supporting the Plugin creator"
 msgstr "Soutenir le créateur du plugin"
 
-#: includes/partials/dezo-admin-display.php:124
+#: includes/partials/dezo-admin-display.php:154
 msgid ""
 "This plugin is available for free. So we can offer you even more features, "
 "made a donation to the plugin creator, DezoDev, or made mention of the "
@@ -142,3 +162,40 @@ msgstr ""
 "Ce plugin vous est proposé gratuitement. Pour qu'on puisse vous proposer "
 "encore plus de fonctionalités, faite un don pour le créateur du plugin, "
 "DezoDev, ou faite parler du plugin."
+
+#: includes/partials/dezo-admin-display.php:168
+msgid "Support"
+msgstr "Support"
+
+#: includes/partials/dezo-admin-display.php:171
+msgid "If you have an issue, please announce us it via the support of github."
+msgstr ""
+"Si vous rencontrez un bug, veuillez nous en faire part via le support de "
+"github."
+
+#: includes/partials/dezo-admin-display.php:173
+msgid "Go to the support"
+msgstr "Accéder au support"
+
+#: template/maintenance.php:4
+msgid "Site in maintenance"
+msgstr "Site en maintenance"
+
+#: template/maintenance.php:30
+msgid "is back soon !"
+msgstr "est de retour bientôt !"
+
+#: template/maintenance.php:40
+msgid ""
+"Your site is at present off-line. We are realizing a maintenance. Thank you "
+"for your understanding."
+msgstr ""
+"Votre site est actuellement hors-ligne. Nous réalisons une maintenance. "
+"Merci pour votre compréhension."
+
+#: template/maintenance.php:44
+msgid "Reason:"
+msgstr "Raison :"
+
+#~ msgid "Registered options."
+#~ msgstr "Options enregistrés"

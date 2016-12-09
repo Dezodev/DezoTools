@@ -55,6 +55,20 @@ function dezo_script_public() {
             'version'       => $dezo_const->version,
             'inFooter'      => true
         ],
+        [
+            'name'          => 'dezo-countdown-script',
+            'url'           => $dezo_const->uri.'assets/public/js/jquery.countdown.min.js',
+            'dependencies'  => array('jquery'),
+            'version'       => '2.2.0',
+            'inFooter'      => true
+        ],
+        [
+            'name'          => 'dezo-maintenance-set',
+            'url'           => $dezo_const->uri.'assets/public/js/dezo-maintenance.js',
+            'dependencies'  => array('jquery', 'dezo-lightbox-script'),
+            'version'       => $dezo_const->version,
+            'inFooter'      => true
+        ],
     ];
 
     foreach ($js_includes as $js_include) {
@@ -85,6 +99,34 @@ function dezo_script_public() {
     }
     //_Lightbox
 
+    // Maitenance countdown
+    $maintActivation = get_option($dezo_const->shortname.'_maint_activation');
+    $maintenanceEndDate = get_option($dezo_const->shortname.'_maintenance_end_date');
+
+    echo "is_super_admin : ".var_export(is_super_admin(), true)."<br>".
+        "get_option(maintActivation) : ".var_export($maintActivation, true)."<br>".
+        "get_option(maintenanceEndDate) : ".var_export($maintenanceEndDate, true)."<br>";
+
+
+
+    if(is_super_admin()){
+        wp_dequeue_script( 'dezo-countdown-script' );
+        wp_dequeue_script( 'dezo-maintenance-set' );
+    } elseif(!$maintActivation) {
+        echo "Maint. desactivé";
+        wp_dequeue_script( 'dezo-countdown-script' );
+        wp_dequeue_script( 'dezo-maintenance-set' );
+    } elseif (empty($maintenanceEndDate)) {
+        echo "Pas de date";
+        wp_dequeue_script( 'dezo-countdown-script' );
+        wp_dequeue_script( 'dezo-maintenance-set' );
+    } else {
+        wp_localize_script( 'dezo-maintenance-set', 'php_vars', array(
+                'endDate' => $maintenanceEndDate,
+            )
+        );
+    }
+    //_Maitenance countdown
 
     /* -- CSS -- */
     $css_includes = [
@@ -104,7 +146,7 @@ function dezo_script_public() {
         ],
         [
             'name'          => 'dezo-grids-style',
-            'url'           => 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+            'url'           => 'https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css',
             'dependencies'  => null,
             'version'       => '0.6.0',
             'media'         => 'all'
@@ -122,11 +164,18 @@ add_action( 'wp_enqueue_scripts', 'dezo_script_public' );
 function dezo_script_admin() {
     $dezo_const = dezo_get_const();
 
-    /* -- JS -- */
+    /* -- JS --  */
     $js_includes = [
         [
             'name'          => 'dezo-script-admin',
             'url'           => $dezo_const->uri.'assets/admin/js/dezo-tools-admin.js',
+            'dependencies'  => array('jquery', 'dezo-datetimepicker-script-admin'),
+            'version'       => $dezo_const->version,
+            'inFooter'      => true
+        ],
+        [
+            'name'          => 'dezo-datetimepicker-script-admin',
+            'url'           => $dezo_const->uri.'assets/admin/js/jquery.datetimepicker.full.min.js',
             'dependencies'  => array('jquery'),
             'version'       => $dezo_const->version,
             'inFooter'      => true
@@ -143,6 +192,13 @@ function dezo_script_admin() {
         [
             'name'          => 'dezo-style-admin',
             'url'           => $dezo_const->uri.'assets/admin/css/dezo-tools-admin.css',
+            'dependencies'  => null,
+            'version'       => $dezo_const->version,
+            'media'         => 'all'
+        ],
+        [
+            'name'          => 'dezo-datetimepicker-style-admin',
+            'url'           => $dezo_const->uri.'assets/admin/css/jquery.datetimepicker.min.css',
             'dependencies'  => null,
             'version'       => $dezo_const->version,
             'media'         => 'all'

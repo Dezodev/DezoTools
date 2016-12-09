@@ -4,5 +4,6 @@
 
 .dezo-tools-wrap h1.nav-tab-wrapper, .dezo-tools-wrap h2.nav-tab-wrapper, .dezo-tools-wrap h3.nav-tab-wrapper { padding-bottom: 0!important; }
 
-.dezo-tools-wrap .dezo-label { width: 20%; display: inline-block; }
-.dezo-tools-wrap fieldset label { width: 100%; display: block; }
+.dezo-tools-wrap fieldset { padding: 5px 0; }
+.dezo-tools-wrap .dezo-field-text .dezo-fild-name { width: 20%; float: left; }
+.dezo-tools-wrap .dezo-field-text .dezo-fild-content{ width: 70%; float: left; }

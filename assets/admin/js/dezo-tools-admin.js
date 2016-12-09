@@ -15,6 +15,9 @@ jQuery(function($){
 				$(this).addClass('nav-tab-active');
 			});
 
+			$('#dezo_tools_maintenance_end_date').datetimepicker({
+			  format:'d/m/Y H:i'
+			});
 		});
 	});
 });

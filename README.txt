@@ -3,7 +3,7 @@ Contributors: DezoDev
 Donate link: http://dezodev.tk/
 Tags: dezo, tools, all in one
 Requires at least: 4.0
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -22,6 +22,8 @@ Features:
 * Configuration of the number of revision
 * Configuration of the interval of automatic save
 * Display of the images in a lightbox window
+* NEW : Maintenance page
+* NEW : HTML minification
 
 == Installation ==
 
@@ -33,6 +35,9 @@ Features:
 
 = 0.1.0 =
 * Change swipebox to fancybox
+* NEW : Maintenance page
+* NEW : HTML minification
+
 = 0.0.2 =
 * Minor Bugfix : Compatibilty, Header & Footer code
 

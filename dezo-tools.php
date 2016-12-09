@@ -57,6 +57,9 @@ function dezo_tools(){
 		require_once $dezo_const->dir.'includes/class-dezo_tools-maintenance.php';
         new dezo_tools_maintenance();
 	}
+
+	// Load Dezo-tools Minify
+	require_once $dezo_const->dir.'includes/dezo_tools-minify-html.php';
 }
 
 function dezo_init(){

@@ -9,19 +9,19 @@ $dezo_const = dezo_get_const();
 
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 
+    <?php if ($fl_save) : ?>
+        <div class="notice notice-success is-dismissible">
+            <p>Vos options ont bien été sauvegardé</p>
+            <button type="button" class="notice-dismiss"></button>
+        </div>
+    <?php endif; ?>
+
     <div id="poststuff">
 
 		<div id="post-body" class="metabox-holder columns-2">
 
 			<!-- main content -->
 			<div id="post-body-content">
-
-                <?php if ($update != 0) : ?>
-                    <div class="notice notice-success is-dismissible">
-                        <p><?php _e( 'Registered options.', 'dezo-tools' ); ?></p>
-                        <button type="button" class="notice-dismiss"><span class="screen-reader-text">Ne pas tenir compte de ce message.</span></button>
-                    </div>
-                <?php endif; ?>
 
                 <h2 class="nav-tab-wrapper">
                     <a href="#<?= $dezo_const->dashname?>-general" class="nav-tab nav-tab-active"><?php _e('General','dezo-tools') ?></a>
@@ -46,17 +46,38 @@ $dezo_const = dezo_get_const();
                             </label>
                         </fieldset>
 
-                        <h3><?php _e('maintenance', 'dezo-tools'); ?></h3>
+                        <h3><?php _e('Maintenance', 'dezo-tools'); ?></h3>
                         <fieldset>
                             <label for="<?php echo $maintActivation; ?>">
                                 <input name="<?php echo $maintActivation; ?>" type="checkbox" id="<?php echo $maintActivation; ?>" <?php checked( 1, get_option($maintActivation)); ?> value="1" />
-                                <span><?php _e( 'Activate the page of maintenance', 'dezo-tools' ); // FR : Activer la page de maintenance ?></span>
+                                <span><?php _e( 'Activate the page of maintenance ( Except for the administrators )', 'dezo-tools' ); // FR : Activer la page de maintenance (sauf pour les administrateurs) ?></span>
                             </label>
                         </fieldset>
                         <fieldset>
-                            <label for="<?php echo $maintReason; ?>"><?= __('Reason of the maintenance', 'dezo-tools') // FR : Raison de la maintenance ?><span class="description"><?= 'Si vide ne s\'affiche pas' ?></span></label>
-
-                            <textarea id="<?php echo $maintReason; ?>" name="<?php echo $maintReason; ?>" cols="80" rows="2"><?php echo (get_option($maintReason) != null) ? get_option($maintReason) : '' ; ?></textarea><br>
+                            <div class="dezo-field-text">
+                                <div class="dezo-fild-name">
+                                    <label for="<?php echo $maintReason; ?>">
+                                        <?= __('Reason of the maintenance', 'dezo-tools') // FR : Raison de la maintenance ?><br/>
+                                        <span class="description"><?= __('If empty, the message does not display', 'dezo-tools')  // FR : 'Si vide, le message ne s\'affiche pas' ?></span>
+                                    </label>
+                                </div>
+                                <div class="dezo-fild-content">
+                                    <textarea id="<?php echo $maintReason; ?>" name="<?php echo $maintReason; ?>" cols="80" rows="2"><?php echo (get_option($maintReason) != null) ? get_option($maintReason) : '' ; ?></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="dezo-field-text">
+                                <div class="dezo-fild-name">
+                                    <label for="<?php echo $maintenanceEndDate; ?>">
+                                        <?= __('Reason of the maintenance', 'dezo-tools') // FR : Raison de la maintenance ?><br/>
+                                        <span class="description"><?= __('If empty, the message does not display', 'dezo-tools')  // FR : 'Si vide, le message ne s\'affiche pas' ?></span>
+                                    </label>
+                                </div>
+                                <div class="dezo-fild-content">
+                                    <input type="text" id="<?php echo $maintenanceEndDate; ?>" name="<?php echo $maintenanceEndDate; ?>" value="<?php echo (get_option($maintenanceEndDate) != null) ? get_option($maintenanceEndDate) : '' ; ?>"></input>
+                                </div>
+                            </div>
                         </fieldset>
 
                         <h3><?php _e('Wordpress Admin', 'dezo-tools'); ?></h3>
@@ -98,22 +119,36 @@ $dezo_const = dezo_get_const();
                     <div class="tab-content ui-tabs-hide" id="<?= $dezo_const->dashname?>-performance">
                         <h3><?php _e('Performance setting', 'dezo-tools'); ?></h3>
                         <fieldset>
-                            <label for="<?php echo $logoInLogin; ?>">
-                                <span class="dezo-label"><?php _e( 'Number of revision : ', 'dezo-tools' ); ?></span>
-                                <input type="number" class="dezo-input" id="<?php echo $postRevision; ?>" name="<?php echo $postRevision; ?>" min="0" max="15" value="<?php echo (get_option($postRevision) != null) ? get_option($postRevision) : '' ; ?>">
-                            </label>
+                            <div class="dezo-field-text">
+                                <div class="dezo-fild-name">
+                                    <label for="<?php echo $logoInLogin; ?>"><span class="dezo-label"><?php _e( 'Number of revision : ', 'dezo-tools' ); ?></span></label>
+                                </div>
+                                <div class="dezo-fild-content">
+                                    <input type="number" class="dezo-input" id="<?php echo $postRevision; ?>" name="<?php echo $postRevision; ?>" min="0" max="15" value="<?php echo (get_option($postRevision) != null) ? get_option($postRevision) : '' ; ?>">
+                                </div>
+                            </div>
                         </fieldset>
                         <fieldset>
-                            <label for="<?php echo $logoInLogin; ?>">
-                                <span class="dezo-label"><?php _e( 'Post auto-save interval : ', 'dezo-tools' ); ?></span>
-                                <input type="number" class="dezo-input" id="<?php echo $postInterval; ?>" name="<?php echo $postInterval; ?>" min="20" max="120" value="<?php echo (get_option($postInterval) != null) ? get_option($postInterval) : '' ; ?>">
+                            <div class="dezo-field-text">
+                                <div class="dezo-fild-name">
+                                    <label for="<?php echo $logoInLogin; ?>"><span class="dezo-label"><?php _e( 'Post auto-save interval : ', 'dezo-tools' ); ?></span></label>
+                                </div>
+                                <div class="dezo-fild-content">
+                                    <input type="number" class="dezo-input" id="<?php echo $postInterval; ?>" name="<?php echo $postInterval; ?>" min="20" max="120" value="<?php echo (get_option($postInterval) != null) ? get_option($postInterval) : '' ; ?>">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <label for="<?php echo $htmlMinify; ?>">
+                                <input name="<?php echo $htmlMinify; ?>" type="checkbox" id="<?php echo $htmlMinify; ?>" <?php checked( 1, get_option($htmlMinify)); ?> value="1" />
+                                <span><?php _e( 'Activate the minification of the HTML', 'dezo-tools' ); //FR : Activer la minification du HTML ?></span>
                             </label>
                         </fieldset>
 
                     </div>
 
                     <input type="hidden" name="token" value="9A64E2178">
-                    <?php submit_button('Save all changes', 'primary','submit', TRUE); ?>
+                    <?php submit_button(__('Save all changes', 'dezo-tools'), 'primary','submit', TRUE); ?>
                 </form>
 
 
@@ -122,7 +157,6 @@ $dezo_const = dezo_get_const();
 
 			<!-- sidebar -->
 			<div id="postbox-container-1" class="postbox-container">
-
 				<div class="meta-box-sortables">
 
 					<div class="postbox">
@@ -139,22 +173,24 @@ $dezo_const = dezo_get_const();
                             </form>
 
 						</div>
-						<!-- .inside -->
 
 					</div>
-					<!-- .postbox -->
 
+                    <div class="postbox">
 
+						<h2><span><?php _e( 'Support', 'dezo-tools' ); ?></span></h2>
+
+						<div class="inside">
+							<p><?= __('If you have an issue, please announce us it via the support of github.', 'dezo-tools') //FR : Si vous rencontrez un bug, veuillez nous en faire part via le support de github. ?></p>
+
+                            <a class="button-secondary" href="https://github.com/Dezodev/DezoTools/issues" target="_blank" title="<?= __('Go to the support', 'dezo-tools'); ?>"><?= __('Go to the support', 'dezo-tools'); //FR: Accéder au support?></a>
+                        </div>
+
+					</div>
 
 				</div>
-				<!-- .meta-box-sortables -->
-
 			</div>
-			<!-- #postbox-container-1 .postbox-container -->
-
 		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
-
 		<br class="clear">
 	</div>
 	<!-- #poststuff -->
