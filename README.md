@@ -8,14 +8,7 @@ Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a s
 
 ## Features:
 
-* Logo of the site on the login page
-* Notification of the use of Cookies
-* Addition of code in the footer and in the header
-* Configuration of the number of revision
-* Configuration of the interval of automatic save
-* Display of the images in a lightbox window
-* NEW : Maintenance page
-* NEW : HTML minification
+* 
 
 ## Installation
 

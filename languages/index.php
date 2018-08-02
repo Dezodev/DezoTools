@@ -1,2 +1,0 @@
-<?php
-/* I'm secret */
