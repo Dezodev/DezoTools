@@ -66,6 +66,46 @@ class DezoTools_Admin {
                     'default' => null
                 ]
             ],
+            'dezo-custom-header' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-custom-header',
+                'args' => [
+                    'type' => 'string',
+                    'description' => null,
+                    'default' => null
+                ]
+            ],
+            'dezo-custom-footer' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-custom-footer',
+                'args' => [
+                    'type' => 'string',
+                    'description' => null,
+                    'default' => null
+                ]
+            ],
+            'dezo-hide-wp-header-details' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-hide-wp-header-details',
+                'args' => [
+                    'type' => 'boolean',
+                    'description' => null,
+                    'default' => 0
+                ]
+            ],
+            'dezo-disable-emojis' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-disable-emojis',
+                'args' => [
+                    'type' => 'boolean',
+                    'description' => null,
+                    'default' => 0
+                ]
+            ],
         ];
     }
 
@@ -92,10 +132,35 @@ class DezoTools_Admin {
             'dezotools-insert-code', 'Insertion de code',
             [&$this, 'dezotools_insert_code_options'], 'dezotools_main'
         );
-
+        
         add_settings_field(
             'ganalytics-id', 'Code de suivi Google Analytics',
             [&$this, 'dezotools_ganalytics_id'], 'dezotools_main', 'dezotools-insert-code'
+        );
+        
+        add_settings_field(
+            'dezo-custom-header', 'Code additionnel en en-tête de page',
+            [&$this, 'dezotools_custom_header'], 'dezotools_main', 'dezotools-insert-code'
+        );
+        
+        add_settings_field(
+            'dezo-custom-footer', 'Code additionnel en pied de page',
+            [&$this, 'dezotools_custom_footer'], 'dezotools_main', 'dezotools-insert-code'
+        );
+        
+        add_settings_section( 
+            'dezotools-secure-performance', 'Sécurité & Performance',
+            [&$this, 'dezotools_secure_performance_options'], 'dezotools_main'
+        );
+        
+        add_settings_field(
+            'dezo-hide-wp-header-details', 'Retirer les détails de wordpress en en-tête de page',
+            [&$this, 'dezo_hide_wp_header_details'], 'dezotools_main', 'dezotools-secure-performance'
+        );
+        
+        add_settings_field(
+            'dezo-disable-emojis', 'Désactiver les emojis',
+            [&$this, 'dezo_disable_emojis'], 'dezotools_main', 'dezotools-secure-performance'
         );
     }
     
@@ -107,7 +172,16 @@ class DezoTools_Admin {
      * @return void
      */
     public function dezotools_insert_code_options() {
-        echo 'Ajouter du code à insérer en en-tête ou en pied de page.';
+        echo '<p>Ajouter du code à insérer en en-tête ou en pied de page.</p>';
+    }
+
+    /**
+     * Code for 'secure & performance' section
+     * 
+     * @return void
+     */
+    public function dezotools_secure_performance_options() {
+        echo '<p>Options pour sécuriser et optimiser votre site.</p>';
     }
 
     /*-- Plugin Options --*/
@@ -115,6 +189,29 @@ class DezoTools_Admin {
     public function dezotools_ganalytics_id() {
         $val = get_option('ganalytics-id');
         echo $this->form_text_input('text', 'ganalytics-id', $val);
+    }
+    
+    public function dezotools_custom_header() {
+        $val = get_option('dezo-custom-header');
+        echo $this->form_textarea_input('dezo-custom-header', $val, 4);
+    }
+    
+    public function dezotools_custom_footer() {
+        $val = get_option('dezo-custom-footer');
+        echo $this->form_textarea_input('dezo-custom-footer', $val, 4);
+    }
+    
+    public function dezo_hide_wp_header_details() {
+        $val = get_option('dezo-hide-wp-header-details');
+        echo $this->form_checkbox_input(
+            'dezo-hide-wp-header-details', $val,
+            'Supprimer les détails de WordPress dans l\'en-tête du site. Cela pour éviter de retrouver facilement la version de votre WP.'
+        );
+    }
+    
+    public function dezo_disable_emojis() {
+        $val = get_option('dezo-disable-emojis');
+        echo $this->form_checkbox_input('dezo-disable-emojis', $val, 'Retirer les emojis du site');
     }
 
     /*-- Plugin Methods --*/
@@ -150,4 +247,39 @@ class DezoTools_Admin {
         
         return $html;
     }
+
+    private function form_textarea_input(String $name, $value, $rows = 3) {
+        $settings = $this->get_options_lists();
+        
+        $html = '<textarea name="'. $name .'" id="'. $name .'" rows="'. $rows .'">'. esc_attr($value) .'</textarea>';
+        
+        if (!empty($settings[$name]['args']['description'])) {
+            $html .= '<p class="description">'.$settings[$name]['args']['description'].'</p>';
+        }
+        
+        return $html;
+    }
+    
+    private function form_checkbox_input(String $name, $value, String $label = null) {
+        $settings = $this->get_options_lists();
+        
+        $html = '
+            <label for="'. $name .'"><input type="checkbox" name="'. $name .'" id="'. $name .'" value="1"'
+            . checked(1, $value, false) .'>
+        ';
+        
+        if (!empty($label)) {
+            $html .= $label.'</label>';
+        } else {
+            $html .= 'Activer cette fonctionnalité</label>';
+        }
+        
+        if (!empty($settings[$name]['args']['description'])) {
+            $html .= '<p class="description">'.$settings[$name]['args']['description'].'</p>';
+        }
+        
+        return $html;
+    }
 }
+
+?>
