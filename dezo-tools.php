@@ -70,9 +70,12 @@ if (!class_exists('DezoTools_Main')) {
         public function includes() {
             require_once DEZOTOOLS_INCLUDES.'admin/dezotools-admin.php';
             new DezoTools_Admin();
-            
+
             require_once DEZOTOOLS_INCLUDES.'public/dezotools-public.php';
             new DezoTools_Public();
+
+            require_once DEZOTOOLS_INCLUDES.'public/dezotools-minify.php';
+            new dezoTools_Minify();
         }
 
         /** Plugin helpers **/
