@@ -30,7 +30,7 @@ class dezoTools_Public
     /*-- Plugin actions --*/
 
     public function insert_ga_tracking_code() {
-        $gaID = get_option('ganalytics-id');
+        $gaID = get_option('dezo-ganalytics-id');
 
         if (!empty($gaID)) {
             ?>

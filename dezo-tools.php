@@ -51,7 +51,9 @@ if (!class_exists('DezoTools_Main')) {
         }
 
         public static function plugin_activate() {
-
+            $include_dir = trailingslashit(plugin_dir_path(__FILE__)).trailingslashit('includes');
+            require_once $include_dir.'admin/dezotools-admin.php';
+            DezoTools_Admin::set_default_options();
         }
 
         public static function plugin_desactivate() {
