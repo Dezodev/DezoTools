@@ -27,10 +27,11 @@ class DezoTools_Admin {
      * @return void
      */
     public function add_admin_menu() {
+        $menu_icon = 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(DEZOTOOLS_DIR."assets/admin/img/dezotools-icon-no-bck.svg"));
         add_menu_page(
             'Dezo Tools : Général', 'Dezo Tools', 'manage_options',
             'dezotools_main', [&$this, 'admin_main_page'],
-            'dashicons-admin-tools', 95
+            $menu_icon, 95
         );
 
         add_submenu_page(
@@ -122,6 +123,11 @@ class DezoTools_Admin {
             'dezo-disable-emojis', 'Désactiver les emojis',
             [&$this, 'dezo_disable_emojis'], 'dezotools_main', 'dezotools-secure-performance'
         );
+
+        add_settings_field(
+            'dezo-enable-html-minify', 'HTML minification',
+            [&$this, 'dezo_enable_html_minify'], 'dezotools_main', 'dezotools-secure-performance'
+        );
     }
 
     /*-- Plugin Sections --*/
@@ -172,6 +178,11 @@ class DezoTools_Admin {
     public function dezo_disable_emojis() {
         $val = get_option('dezo-disable-emojis');
         echo $this->form_checkbox_input('dezo-disable-emojis', $val, 'Retirer les emojis du site');
+    }
+
+    public function dezo_enable_html_minify() {
+        $val = get_option('dezo-enable-html-minify');
+        echo $this->form_checkbox_input('dezo-enable-html-minify', $val, 'Activer la minification du HTML');
     }
 
     /*-- Plugin Methods --*/
@@ -233,6 +244,16 @@ class DezoTools_Admin {
                 // Code de suivi Google Analytics
                 'group' => 'dezotools-settgroup',
                 'name' => 'dezo-disable-emojis',
+                'args' => [
+                    'type' => 'boolean',
+                    'description' => null,
+                    'default' => 0
+                ]
+            ],
+            'dezo-enable-html-minify' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-enable-html-minify',
                 'args' => [
                     'type' => 'boolean',
                     'description' => null,
