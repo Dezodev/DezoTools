@@ -11,12 +11,15 @@ class dezoTools_Public
     public function __construct() {
         // Add tracking code
         $this->add_action('wp_head', 'insert_ga_tracking_code');
-        
+
         // Add code in header
         $this->add_action('wp_head', 'custom_header');
-        
+
         // Add code in footer
         $this->add_action('wp_footer', 'custom_footer');
+
+        // Add plugin scripts
+        $this->add_action( 'wp_enqueue_scripts', 'plugin_scripts' );;
 
         // Remove wordpress header details
         $val_hide_wp = get_option('dezo-hide-wp-header-details');
@@ -55,7 +58,7 @@ class dezoTools_Public
             echo $code."\r\n";
         }
     }
-    
+
     public function custom_footer() {
         $code = get_option('dezo-custom-footer');
 
@@ -92,12 +95,13 @@ class dezoTools_Public
         add_filter( 'wp_resource_hints', [&$this, 'disable_emojis_remove_dns_prefetch'], 10, 2 );
     }
 
+
     /**
-    * Filter function used to remove the tinymce emoji plugin.
-    *
-    * @param array $plugins
-    * @return array Difference betwen the two arrays
-    */
+     * Filter function used to remove the tinymce emoji plugin.
+     *
+     * @param array $plugins
+     * @return array Difference betwen the two arrays
+     */
     function disable_emojis_tinymce($plugins) {
         if (is_array($plugins)) {
             return array_diff($plugins, array( 'wpemoji' ));
@@ -105,6 +109,7 @@ class dezoTools_Public
             return array();
         }
     }
+
 
     /**
      * Remove emoji CDN hostname from DNS prefetching hints.
@@ -122,13 +127,58 @@ class dezoTools_Public
         }
         return $urls;
     }
-     
+
+    /**
+     * Function for register styles and scripts for this plugins (in public)
+     *
+     * @return void
+     */
+    public function plugin_scripts() {
+        /* -- CSS -- */
+        $css_includes = [
+            [
+                'name'          => 'dezotools-lightcase-css',
+                'url'           => DEZOTOOLS_URI. 'assets/public/css/lightcase.css',
+                'dependencies'  => false,
+                'version'       => '2.5.0',
+                'media'         => 'all'
+            ],
+        ];
+
+        foreach ($css_includes as $css_include) {
+            wp_register_style( $css_include['name'], $css_include['url'], $css_include['dependencies'], $css_include['version'], $css_include['media'] );
+            wp_enqueue_style( $css_include['name'] );
+        }
+
+        /* -- JS -- */
+        $js_includes = [
+            [
+                'name'          => 'dezotools-lightcase-js',
+                'url'           => DEZOTOOLS_URI. 'assets/public/js/lightcase.js',
+                'dependencies'  => array('jquery'),
+                'version'       => '2.5.0',
+                'inFooter'      => true
+            ],
+            [
+                'name'          => 'dezotools-main-js',
+                'url'           => DEZOTOOLS_URI. 'assets/public/js/dezotools-lightbox.js',
+                'dependencies'  => array('jquery', 'dezotools-lightcase-js'),
+                'version'       => DEZOTOOLS_VER,
+                'inFooter'      => true
+            ],
+        ];
+
+        foreach ($js_includes as $js_include) {
+            wp_register_script( $js_include['name'], $js_include['url'], $js_include['dependencies'], $js_include['version'], $js_include['inFooter'] );
+            wp_enqueue_script( $js_include['name'] );
+        }
+    }
 
     /*-- Plugin helpers --*/
 
     /**
      * Helper method for register actions
-     * 
+     *
      * @return void
      */
     private function add_action($action, $fn, $priority = 10, $accepted_args = 1) {
