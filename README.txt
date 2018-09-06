@@ -15,6 +15,9 @@ Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a s
 Features:
 
 * Insert tracking code of Google Analytics
+* Insert code in footer and in header
+* Improve site performance
+* HTML Minification
 
 == Installation ==
 1. Upload `dezo-tools` folder to the `/wp-content/plugins/` directory or download with wordpress plugin installator
@@ -23,20 +26,8 @@ Features:
 == Changelog ==
 = 0.2.0 =
 * Refactor code
-* Removed notification of the use of Cookies
-
-= 0.1.0 =
-* Change swipebox to fancybox
-* NEW : Maintenance page
-* NEW : HTML minification
-
-= 0.0.2 =
-* Minor Bugfix : Compatibilty, Header & Footer code
-
-= 0.0.1 =
-* First version
 
 == Upgrade Notice ==
 
 = 0.2.0 =
-We removed the cookie consent feature for better application of the GDPR.
+We completely refactor the plugin. The settings can be lost or changed.

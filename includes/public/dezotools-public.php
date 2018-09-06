@@ -160,7 +160,7 @@ class dezoTools_Public
                 'inFooter'      => true
             ],
             [
-                'name'          => 'dezotools-main-js',
+                'name'          => 'dezotools-lightbox-js',
                 'url'           => DEZOTOOLS_URI. 'assets/public/js/dezotools-lightbox.js',
                 'dependencies'  => array('jquery', 'dezotools-lightcase-js'),
                 'version'       => DEZOTOOLS_VER,
