@@ -128,6 +128,16 @@ class DezoTools_Admin {
             'dezo-enable-html-minify', 'HTML minification',
             [&$this, 'dezo_enable_html_minify'], 'dezotools_main', 'dezotools-secure-performance'
         );
+
+        add_settings_section(
+            'dezotools-appearance', 'Apparence',
+            [&$this, 'dezotools_appearance_options'], 'dezotools_main'
+        );
+
+        add_settings_field(
+            'dezo-enable-lightbox', 'Image lightbox',
+            [&$this, 'dezo_enable_lightbox'], 'dezotools_main', 'dezotools-appearance'
+        );
     }
 
     /*-- Plugin Sections --*/
@@ -148,6 +158,15 @@ class DezoTools_Admin {
      */
     public function dezotools_secure_performance_options() {
         echo '<p>Options pour sécuriser et optimiser votre site.</p>';
+    }
+
+    /**
+     * Code for 'secure & performance' section
+     *
+     * @return void
+     */
+    public function dezotools_appearance_options() {
+        echo '<p>Options pour modifier l\'apparence de votre site.</p>';
     }
 
     /*-- Plugin Options --*/
@@ -183,6 +202,11 @@ class DezoTools_Admin {
     public function dezo_enable_html_minify() {
         $val = get_option('dezo-enable-html-minify');
         echo $this->form_checkbox_input('dezo-enable-html-minify', $val, 'Activer la minification du HTML');
+    }
+
+    public function dezo_enable_lightbox() {
+        $val = get_option('dezo-enable-lightbox');
+        echo $this->form_checkbox_input('dezo-enable-lightbox', $val, 'Activer l\'affichage des images en surimpression de la page au clic.');
     }
 
     /*-- Plugin Methods --*/
@@ -254,6 +278,16 @@ class DezoTools_Admin {
                 // Code de suivi Google Analytics
                 'group' => 'dezotools-settgroup',
                 'name' => 'dezo-enable-html-minify',
+                'args' => [
+                    'type' => 'boolean',
+                    'description' => null,
+                    'default' => 0
+                ]
+            ],
+            'dezo-enable-lightbox' => [
+                // Code de suivi Google Analytics
+                'group' => 'dezotools-settgroup',
+                'name' => 'dezo-enable-lightbox',
                 'args' => [
                     'type' => 'boolean',
                     'description' => null,

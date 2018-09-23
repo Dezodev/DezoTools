@@ -1,0 +1,30 @@
+// out: ../css/dezotools-lightbox.min.css, sourcemap: true, compress: true
+/**
+ * Dezo Tools Lightbox styles
+ *
+ * Author: dezodev
+**/
+
+@light_color: #fff;
+@light_bck: #000;
+
+/** Lightbox
+**********************************/
+
+.sl-wrapper {
+    .sl-navigation {
+        button { color: @light_color; }
+    }
+
+    .sl-close, .sl-counter { color: @light_color; }
+}
+
+.sl-overlay {
+    background: @light_bck;
+}
+
+body.admin-bar {
+    .sl-wrapper {
+        .sl-close, .sl-counter { top: 62px; }
+    }
+}

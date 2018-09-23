@@ -134,43 +134,61 @@ class dezoTools_Public
      * @return void
      */
     public function plugin_scripts() {
+        $enable_lightbox = get_option('dezo-enable-lightbox');
+        $enable_lightbox = ($enable_lightbox == '1') ? true : false;
+
         /* -- CSS -- */
         $css_includes = [
             [
-                'name'          => 'dezotools-lightcase-css',
-                'url'           => DEZOTOOLS_URI. 'assets/public/css/lightcase.css',
+                'name'          => 'dezotools-simpleLightbox-css',
+                'url'           => DEZOTOOLS_URI. 'assets/public/simplelightbox/simplelightbox.min.css',
                 'dependencies'  => false,
-                'version'       => '2.5.0',
-                'media'         => 'all'
+                'version'       => '1.13.0',
+                'media'         => 'all',
+                'active'        => $enable_lightbox,
+            ],
+            [
+                'name'          => 'dezotools-lightbox-css',
+                'url'           => DEZOTOOLS_URI. 'assets/public/css/dezotools-lightbox.min.css',
+                'dependencies'  => array('dezotools-simpleLightbox-css'),
+                'version'       => DEZOTOOLS_VER,
+                'media'         => 'all',
+                'active'        => $enable_lightbox,
             ],
         ];
 
         foreach ($css_includes as $css_include) {
-            wp_register_style( $css_include['name'], $css_include['url'], $css_include['dependencies'], $css_include['version'], $css_include['media'] );
-            wp_enqueue_style( $css_include['name'] );
+            if ($css_include['active'] === true) {
+                wp_register_style( $css_include['name'], $css_include['url'], $css_include['dependencies'], $css_include['version'], $css_include['media'] );
+                wp_enqueue_style( $css_include['name'] );
+            }
         }
 
         /* -- JS -- */
         $js_includes = [
             [
-                'name'          => 'dezotools-lightcase-js',
-                'url'           => DEZOTOOLS_URI. 'assets/public/js/lightcase.js',
+                'name'          => 'dezotools-simpleLightbox-js',
+                'url'           => DEZOTOOLS_URI. 'assets/public/simplelightbox/simple-lightbox.min.js',
                 'dependencies'  => array('jquery'),
-                'version'       => '2.5.0',
-                'inFooter'      => true
+                'version'       => '1.13.0',
+                'inFooter'      => true,
+                'active'        => $enable_lightbox,
             ],
             [
                 'name'          => 'dezotools-lightbox-js',
                 'url'           => DEZOTOOLS_URI. 'assets/public/js/dezotools-lightbox.js',
-                'dependencies'  => array('jquery', 'dezotools-lightcase-js'),
+                'dependencies'  => array('jquery', 'dezotools-simpleLightbox-js'),
                 'version'       => DEZOTOOLS_VER,
-                'inFooter'      => true
+                'inFooter'      => true,
+                'active'        => $enable_lightbox,
             ],
         ];
 
         foreach ($js_includes as $js_include) {
-            wp_register_script( $js_include['name'], $js_include['url'], $js_include['dependencies'], $js_include['version'], $js_include['inFooter'] );
-            wp_enqueue_script( $js_include['name'] );
+            if ($js_include['active'] === true) {
+                wp_register_script( $js_include['name'], $js_include['url'], $js_include['dependencies'], $js_include['version'], $js_include['inFooter'] );
+                wp_enqueue_script( $js_include['name'] );
+            }
         }
     }
 
