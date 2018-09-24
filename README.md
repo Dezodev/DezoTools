@@ -8,9 +8,10 @@ Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a s
 ## Features:
 
 * Insert tracking code of Google Analytics
-* Insert code in footer and in header
+* Insert code in header and footer
 * Improve site performance
 * HTML Minification
+* Image lightbox
 
 ## Installation
 
