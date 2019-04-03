@@ -3,20 +3,21 @@
  * Dezo Tools start file
  *
  * @link              http://dezodev.tk/
- * @since             0.2.0
+ * @since             0.2.1
  * @package           DezoTools
  *
  * @wordpress-plugin
  * Plugin Name:       Dezo Tools
  * Plugin URI:        http://dezodev.tk/dezo-tools
- * Description:       Dezo Tools is a plugin all in one to improve your wordpress.
- * Version:           0.2.0
+ * Description:       DezoTools is an all-in-one plugin to improve WordPress
+ * Version:           0.2.1
  * Author:            Dezodev
  * Author URI:        http://dezodev.tk/
  * License:           GPL-3.0+
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       dezo-tools
  * Domain Path:       /languages
+ * GitHub Plugin URI: https://github.com/Dezodev/dezo-tools
  */
 
 // If this file is called directly, abort.
@@ -66,7 +67,7 @@ if (!class_exists('DezoTools_Main')) {
             define('DEZOTOOLS_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) ); // Plugin Directory
 			define('DEZOTOOLS_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) ); // Plugin URL
 			define('DEZOTOOLS_INCLUDES', DEZOTOOLS_DIR . trailingslashit( 'includes' ) ); // Path to include dir
-            define('DEZOTOOLS_VER', '0.2.0' ); // Plugin version
+            define('DEZOTOOLS_VER', '0.2.1' ); // Plugin version
         }
 
         public function includes() {

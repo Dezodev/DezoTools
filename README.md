@@ -1,17 +1,20 @@
 # Dezo Tools
-Dezo Tools is a plugin all in one to improve your wordpress.
+
+🌐 : DezoTools is an all-in-one plugin to improve WordPress
+
+🇫🇷 : DezoTools est un plugin tout-en-un pour améliorer WordPress.
 
 ## Description
 
-Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a set of several tools to improve your wordpress, secure it and optimize it. With this plugin, you will not any more need to install on your site several plugins. It also allows the acceleration of your site.
+Dezo Tools is a powerful but easy-to-use plugin for wordpress. This plugin is a set of tools to improve your wordpress, secure and optimize it. With this plugin, you will no longer need to install several plugins on your site. It also speeds up your site.
 
-## Features:
+## Features
 
 * Insert tracking code of Google Analytics
 * Insert code in header and footer
 * Improve site performance
 * HTML Minification
-* Image lightbox
+* Display images with a lightbox
 
 ## Installation
 
@@ -20,7 +23,7 @@ Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a s
 
 ## TODO
 
-* Translate plugin in English
+- [ ] Translate plugin in English
 
 ## Changelog
 
@@ -30,10 +33,10 @@ Dezo Tools is a powerful but easy to use plugin on wordpress. This plugin is a s
 
 ## Others
 
-Contributors: dezodev
-Tags: all-in-one, tools
-Donate link: http://dezodev.tk/dezo-tools
-Requires at least: 4.0
-Tested up to: 4.9
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+* Contributors: dezodev
+* Tags: all-in-one, tools
+* Donate link: https://www.paypal.me/imdezodev
+* Requires at least: 4.0
+* Tested up to: 4.9
+* License: GPLv3 or later
+* License URI: http://www.gnu.org/licenses/gpl-3.0.html
